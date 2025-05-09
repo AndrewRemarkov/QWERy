@@ -7,7 +7,9 @@ html(lang="ru")
     link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
     link(href="https://fonts.googleapis.com/css?family=Open+Sans:regular,600,700" rel="stylesheet")
     link(rel="stylesheet" href="/css/reset.css")
+    link(rel="stylesheet" href="/js/libs/gallery.css")
     link(rel="stylesheet" href="/css/index.css")
+
   body
     .cover-space
     header.header
@@ -46,7 +48,7 @@ html(lang="ru")
         | Scroll down
         .scroll-down__icon.icon__arrow_downward
     .container
-      section.section-cols
+      section.section.section-cols
         img.section-col.section-col__image(src='/images/enjoy.jpg' alt='Mountains')
         .section-col.section-col__content
           .main-title.main-title_small
@@ -56,6 +58,86 @@ html(lang="ru")
           a.arrow-link(href='#!')
             | read more
             .arrow-link__icon.icon__arrow_rightward
+      section.section
+        #gallery.gallery
+          each val, index in [1, 2, 3]
+            - var suffix = index === 0 ? '' : `_${index + 1}`;
+            - var slidesTitleSummary = ['Bromo', 'Rinjani', 'Ijen'];
+            - var slidesTitleText = ['Steady your steps, we&nbsp;will climb together!', 'Hold your breath, adventure is&nbsp;calling!', 'Light your way, the blue flames await!'];
+            - var slidesDescription = ['Enjoying the vast expanse of&nbsp;the sea of ​​​​sand, witnessing the splendor of&nbsp;Mount Semeru that soars into the sky, and gazing at&nbsp;the beauty of&nbsp;the sun moving out of&nbsp;its bed or&nbsp;otherwise enjoying the dim twilight from the Bromo ridge is&nbsp;an&nbsp;unforgettable experience when visiting Bromo.', 'Trekking through lush forests, passing cascading waterfalls, and finally reaching the majestic crater lake at&nbsp;the top of&nbsp;Mount Rinjani offers a&nbsp;journey filled with wonder. Whether you\&rsquo;re catching the sunrise from the summit or&nbsp;resting under a&nbsp;blanket of&nbsp;stars, every moment spent on&nbsp;Rinjani is&nbsp;a&nbsp;memory etched in&nbsp;the soul.', 'Embark on&nbsp;a&nbsp;midnight hike through misty trails to&nbsp;witness the rare natural wonder of&nbsp;Ijen&rsquo;s blue fire. As&nbsp;daylight breaks, the turquoise crater lake reveals itself, nestled amid smoky volcanic cliffs&mdash;a scene so&nbsp;surreal, it&nbsp;feels like stepping into another world. Visiting Ijen is&nbsp;a&nbsp;powerful reminder of&nbsp;nature&rsquo;s raw beauty.']
+            .gallery__slide(style=`background-image: url("/images/gallery${suffix}.jpg")`)
+              .gallery__content
+                .container_small
+                  .main-title.main-title_small.main-title_centered
+                    span.main-title__summary= slidesTitleSummary[index]
+                    h2.main-title__text !{slidesTitleText[index]}
+                  p !{slidesDescription[index]}
+                  a.arrow-link.arrow-link_centered(href='#!')
+                    | read more
+                    .arrow-link__icon.icon__arrow_rightward
+      section.section.section-cols
+        .section-col.section-col__content
+          .main-title.main-title_small
+            span.main-title__summary INDONESIAN CULTURE
+            h2.main-title__text Our culture here is&nbsp;very friendly to&nbsp;people
+          p Known for his politeness, manners and gentleness. This becomes a&nbsp;characteristic when they mingle with other tribes and become basic traits that are passed down by&nbsp;their ancestors.
+          a.arrow-link(href='#!')
+            | read more
+            .arrow-link__icon.icon__arrow_rightward
+        img.section-col.section-col__image(src='/images/culture.jpg' alt='Mountains')
+      section.section-border
+        .start 
+          h2.start__title 
+            a(href='#!') QWERy
+          .start__content 
+            h4.start__description Ready to explore?
+            button.button Get started
+      footer.footer
+        .footer__content
+          .subscribe 
+            h3.subscribe__title Let&rsquo;s go&nbsp;on&nbsp;vacation, Make your day
+            .email
+              input.email__form(type='text' placeholder='Email address')
+              button.button.email__button(type='submit')
+                .button__icon.icon-arriw_right 
+          .menu 
+            h4.menu__title Services
+            ul.memu__list 
+              each link in ['Email Marketing', 'Compaigns', 'Branding', 'Offline']
+                li.menu__item
+                  a.menu__link(href='#!')= link
+          .menu 
+            h4.menu__title About
+            ul.memu__list 
+              each link in ['Our Story', 'Benefits', 'Team', 'Team']
+                li.menu__item
+                  a.menu__link(href='#!')= link
+          .menu 
+            h4.menu__title Team
+            ul.memu__list 
+              each link in ['FAQs', 'Contact Us']
+                li.menu__item
+                  a.menu__link(href='#!')= link
+        .footer__bottom
+          .footer__terms
+            a.footer__link(href='#!') Terms &amp;&nbsp;Conditions
+            a.footer__link(href='#!') Privacy Policy
+          ul.soc1al-horisontal
+            li.soc1al-horisontal__item
+              a.soc1al-horisontal__link(href="#!")
+                .icon__facebook 
+            li.soc1al-horisontal__item
+              a.soc1al-horisontal__link(href="#!")
+                .icon__twitter
+            li.soc1al-horisontal__item
+              a.soc1al-horisontal__link(href="")
+                .icon__instagram
+
+    script(src="/js/libs/gallery.js")         
+    script(src="/js/index.js") 
+
+
+
 
 
 

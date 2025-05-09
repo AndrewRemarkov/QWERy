@@ -2,6 +2,8 @@ $main_dark = #000;
 $main_light = #fff;
 $main_highlite = #FBD784;
 $main_buttons = #FFA343;
+$main_border = rgba($main_light, 30%);
+$border_radius = 8px;
 $main_shift = 3.55rem;
 
 html, body {
@@ -28,9 +30,19 @@ a {
   max-width: 1460px;
   margin: 0 auto;
 
+  &_small {
+    max-width: 934px;
+    padding: 0 2.75rem 2.5rem;
+    margin: 0 auto;
+  }
+
   p {
     margin-bottom: 1.3em;
   }
+}
+
+.section {
+  margin-bottom: 14rem;
 }
 
 /* Main styles */
@@ -199,6 +211,23 @@ a {
       line-height: 1.4;
     }
   }
+
+  &_centered {
+    text-align: center;
+
+    .main-title__summary {
+      justify-content: center;
+
+      &::after {
+        content: '';
+        display: block;
+        width: 4em;
+        height: 2px;
+        margin-left: calc(1.5em - 0.36em);
+        background: $main_highlite;
+      }
+    }
+  }
 }
 
 .soc1al-networks {
@@ -253,62 +282,263 @@ a {
 }
 
 .section-col {
-  &:first-child {
+  &__image {
     width: 40%;
   }
 
-  &:last-child {
+  &__content {
     width: 44%;
   }
+}
 
-  &__image {
+.section-border {
+  padding-bottom: 3rem;
+  border-bottom: 1px solid $main_border;
+  margin-bottom: 3rem;
+}
+
+/* Gallery */
+.gallery {
+  &__slide {
+    position: relative;
     width: 100%;
+    padding-bottom: 67%;
+    background-size: cover;
   }
 
-  .arrow-link {
+  &__content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 100%);
+  }
+}
+
+/* Pre-footer */
+.start {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__title {
+    font-size: 2.66rem;
+    font-weight: 700;
+    margin-right: 3rem;
+
+    a {
+      color: $main_light;
+      cursor: pointer;
+      text-decoration: none;
+    }
+  }
+
+  &__description {
+    font-size: 1.22rem;
+    margin-right: 3rem;
+  }
+
+  &__content {
     display: flex;
     align-items: center;
-    text-decoration: none;
+  }
+}
 
-    &__icon {
-      margin: 0.1rem 0 0 0.4rem;
+/* Footer */
+.footer {
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 7rem;
+
+    .subscribe {
+      width: 27%;
+
+      &__title {
+        font-size: 2rem;
+        font-weight: bold;
+        line-height: 1.4;
+        margin-bottom: 1.38em;
+      }
     }
+
+    .email {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      border-bottom: 1px solid $main_border;
+
+      &__form {
+        background: none;
+        border: none;
+        font: 0.83rem / 1 'Open Sans', sans-serif;
+        padding: 1.1rem 0.77rem 1.77rem;
+        color: $main_light;
+
+        &::placeholder {
+          color: $main_border;
+          opacity: 1;
+        }
+
+        &:focus {
+          border: none;
+          outline: none;
+        }
+      }
+
+      &__button {
+        position: relative;
+        padding: 0;
+        height: 100%;
+        width: 3.55rem;
+        border-radius: $border_radius $border_radius 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .menu {
+      &__title {
+        color: $main_highlite;
+        font-weight: 700;
+        font-size: 1.1rem;
+        margin-bottom: 0.6em;
+      }
+
+      &__item {
+        margin-bottom: 0.8rem;
+      }
+
+      &__link {
+        color: $main_light;
+        text-decoration: none;
+
+        &:hover, &:visited, &:active {
+          color: $main_light;
+        }
+      }
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2.22rem 2.4rem;
+
+    .soc1al-horisontal {
+      display: flex;
+      font-size: 1.3rem;
+
+      &__item {
+        display: inline-block;
+        margin-left: 2rem;
+      }
+
+      &__link {
+        display: inline-block;
+        opacity: 1;
+        transition: opacity 0.3s;
+
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+
+  &__terms {
+  }
+
+  &__link {
+    color: $main_light;
+    text-decoration: none;
+    font-size: 0.833rem;
+    display: inline-block;
+    margin-right: 4.5rem;
+
+    &:hover, &:visited {
+      color: $main_light;
+    }
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+}
+
+/* Links */
+.arrow-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  flex-wrap: nowrap;
+
+  &__icon {
+    margin: 0.1rem 0 0 0.4rem;
+  }
+
+  &_centered {
+    justify-content: center;
+  }
+}
+
+/* Buttons */
+.button {
+  border: none;
+  background-color: $main_buttons;
+  font: 700 0.9rem / 1 'Open Sans', sans-serif;
+  border-radius: $border_radius;
+  padding: 1.3rem 4.16rem 1.3rem 3.88rem;
+  cursor: pointer;
+  transition: background 0.3s;
+
+  &:hover {
+    background: $main_highlite;
   }
 }
 
 /* Icons */
 .icon__instagram {
-  width: 1.3rem;
-  height: 1.3rem;
+  width: 1.3em;
+  height: 1.3em;
   background: url('/images/icons/instagram.svg');
   background-size: cover;
 }
 
 .icon__twitter {
-  width: 1.3rem;
-  height: 1.3rem;
+  width: 1.3em;
+  height: 1.3em;
   background: url('/images/icons/twitter.svg');
   background-size: cover;
 }
 
 .icon__facebook {
-  width: 1.3rem;
-  height: 1.3rem;
+  width: 1.3em;
+  height: 1.3em;
   background: url('/images/icons/facebook.svg');
   background-size: cover;
 }
 
 .icon__arrow_downward {
-  width: 1rem;
-  height: 1.4rem;
+  width: 1em;
+  height: 1.4em;
   background: url('/images/icons/arrow_downward.svg') no-repeat center center;
   background-size: contain;
 }
 
 .icon__arrow_rightward {
-  width: 1.6rem;
-  height: 1.2rem;
+  width: 1.6em;
+  height: 1.2em;
   background: url('/images/icons/arrow_rightward.svg') no-repeat center center;
+  background-size: contain;
+}
+
+.icon-arriw_right {
+  width: 1.6em;
+  height: 1.2em;
+  background: url('/images/icons/arrow_right.svg') no-repeat center center;
   background-size: contain;
 }
 
@@ -323,11 +553,11 @@ a {
   }
 
   .section-col {
-    &:first-child {
+    &__image {
       width: 40%;
     }
 
-    &:last-child {
+    &__content {
       width: 50%;
     }
   }
@@ -341,11 +571,11 @@ a {
 
 @media screen and (max-width: 1380px) {
   .section-col {
-    &:first-child {
+    &__image {
       width: 43%;
     }
 
-    &:last-child {
+    &__content {
       width: 50%;
     }
   }
